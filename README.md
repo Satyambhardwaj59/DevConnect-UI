@@ -4,3 +4,6 @@
 
 - Craete Vite + React application
 - Remove unnessary code and create Hello world
+- Install tailwindcss
+- Install daisy UI
+- Add Navbar in app.jsx
