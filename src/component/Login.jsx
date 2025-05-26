@@ -9,6 +9,7 @@ const Login = () => {
 
   const [emailId, setEmailId] = useState("satyam@gmail.com");
   const [password, setPassword] = useState("Satyam@123");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,7 +22,8 @@ const Login = () => {
       dispatch(addUser(res.data));
       return navigate("/")
     } catch (error) {
-      console.error(error);
+      setError(error.response.data)
+      console.error(error.response.data);
     }
 
   }
@@ -76,11 +78,13 @@ const Login = () => {
               />
             </label>
             <p className="validator-hint hidden">
-              Must be more than 8 characters, including
+              Password Must be more than 8 characters, including
               <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
             </p>
 
           </div>
+          
+            <p className='text-red-500 '>{error}</p>
           <div className="card-actions justify-center my-2">
             <button className="btn btn-primary " onClick={handleLogin}>LogIn</button>
           </div>
@@ -90,4 +94,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;
