@@ -21,13 +21,14 @@ const NavBar = () => {
     }
   }
   
+
   return (
       <div className="navbar bg-base-300 shadow-sm">
         <div className="flex-1">
           <Link to="/" className="btn btn-ghost text-xl">🖥️ DevConnect</Link>
         </div>
         {user && <div className="flex gap-2">
-          <div className='flex items-center'>Welcome!  <span className='text-orange-400 pl-1'> {user && user.user.firstName}</span></div>
+          <div className='flex items-center'>Welcome!  <span className='text-orange-400 pl-1'>{ user.user.firstName}</span></div>
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mx-8">
               <div className="w-10 rounded-full">

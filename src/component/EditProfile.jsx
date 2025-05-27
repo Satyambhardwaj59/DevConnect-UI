@@ -14,15 +14,23 @@ const EditProfile = ({user}) => {
     const [gender, setGender] = useState(user.user.gender);
     const [skills, setSkills] = useState(user.user.skills);
     const [about, setAbout] = useState(user.user.about);
+    const [error, setError] = useState();
+    const [showToast, setShowToast] = useState(false)
     const dispatch = useDispatch();
 
     const handelEdit = async () => {
         try { 
             const res = await axios.patch(BASE_URL + "/profile/edit", {firstName, lastName, age, gender, about, photoUrl, skills}, {withCredentials: true});
-            dispatch(addUser(res.data.data));
+            dispatch(addUser(res?.data?.data));
+            setShowToast(true);
+            setTimeout(() => {
+                setShowToast(false);
+            }, 3000);
         } catch (error) {
             // TODO
-            console.log(error);
+            console.log(error.responce);
+            
+            setError(error.responce);
         }
     }
     
@@ -49,22 +57,26 @@ const EditProfile = ({user}) => {
                 </fieldset>
                 <fieldset className="fieldset">
                     <legend className="fieldset-legend">Gender</legend>
-                    <input value={gender} type="text" onChange={(e) => setGender(e.target.value)} className="input" placeholder="Type here" />
+                    <select value={gender} onChange={(e) => setGender(e.target.value)} className="select">
+                        <option >male</option>
+                        <option>female</option>
+                        <option>other</option>
+                    </select>
                 </fieldset>
             </div>
             <fieldset className="fieldset">
                 <legend className="fieldset-legend">PhotoUrl</legend>
-                <input value={photoUrl} type="text" onChange={(e) => setPhotoUrl(e.target.value)} className="input" placeholder="Type here" />
+                <textarea value={photoUrl} className="textarea" onChange={(e) => setPhotoUrl(e.target.value)} ></textarea>
             </fieldset>
             <fieldset className="fieldset">
                 <legend className="fieldset-legend">About</legend>
-                <input value={about} type="text" onChange={(e) => setAbout(e.target.value)} className="input" placeholder="Type here" />
+                <textarea value={about} className="textarea" onChange={(e) => setAbout(e.target.value)} ></textarea>
             </fieldset>
             <fieldset className="fieldset">
                 <legend className="fieldset-legend">Skills</legend>
-                <input value={skills} type="text" onChange={(e) => setSkills(e.target.value)} className="input" placeholder="Type here" />
+                <textarea value={skills} className="textarea" onChange={(e) => setSkills(e.target.value)} disabled></textarea>
             </fieldset>
-
+            <p className='text-red-500'>{error}</p>
             <div className='flex justify-center mt-4'>
                 <button className='btn btn-secondary' onClick={handelEdit}>Save Update</button>
             </div>
@@ -73,6 +85,14 @@ const EditProfile = ({user}) => {
       </div>
       <div className=''>
         <UserCard user={{firstName, lastName, age, gender, about, photoUrl, skills}}/>
+      </div>
+      <div>
+        {showToast && 
+        <div className="toast toast-top toast-center">
+            <div className="alert alert-success">
+                <span>Profile Updated successfully.🎉🎉</span>
+            </div>
+        </div>}
       </div>
     </div>  
   );
