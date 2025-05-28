@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
@@ -15,10 +15,10 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-       const res = await axios.post(BASE_URL + "/login", {
+      const res = await axios.post(BASE_URL + "/login", {
         emailId,
         password
-      }, {withCredentials: true});
+      }, { withCredentials: true });
       dispatch(addUser(res.data));
       return navigate("/")
     } catch (error) {
@@ -71,7 +71,6 @@ const Login = () => {
                 type="password"
                 required
                 placeholder="Password"
-                minlength="8"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 onChange={(e) => setPassword(e.target.value)}
                 title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
@@ -83,8 +82,8 @@ const Login = () => {
             </p>
 
           </div>
-          
-            <p className='text-red-500 '>{error}</p>
+
+          <p className='text-red-500 '>{error}</p>
           <div className="card-actions justify-center my-2">
             <button className="btn btn-primary " onClick={handleLogin}>LogIn</button>
           </div>
@@ -95,3 +94,5 @@ const Login = () => {
 }
 
 export default Login;
+
+
