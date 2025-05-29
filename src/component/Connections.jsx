@@ -25,19 +25,18 @@ const Connections = () => {
         fetchData();
     }, []);
 
-    if(connection.length === 0) return <h1>Connection list is empty</h1>
+    console.log();
 
-  return connection && (
-    <div>{
-      connection.map((connection) => {
-        <div>
-            {connection.firstName}
+    return (
+      <>
+        <div className='flex flex-col justify-center items-center mt-10 '>
+          <h1 className='text-3xl'>Connection</h1>
+          {connection ? (connection.map((conn) => <ConnectionCard key={conn._id} user={conn}/>)) : (<h1>No connection</h1>)}
+
         </div>
-      })
-
-      }
-    </div>
-  )
+      </>
+    )
+  
 }
 // 
 {/* <div key={connection._id}>
