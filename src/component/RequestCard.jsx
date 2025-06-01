@@ -1,0 +1,27 @@
+import React from 'react'
+
+const RequestCard = ({user}) => {
+   const {firstName, lastName, photoUrl, age, gender, about, skills} = user;
+    
+  return (
+    <div className="card card-side bg-base-300 w-108 shadow-sm m-10 ">
+        <figure className='w-1/2'>
+            <img
+            src={photoUrl}
+            alt="Movie" />
+        </figure>
+        <div className="card-body">
+            <h2 className="card-title">{firstName + " " + lastName}</h2>
+            <p>{about}</p>
+            <p>{age + ",  " + gender}</p>
+            <p>{skills.join(", ")}</p>
+            <div className='flex justify-between'>
+                <button className="btn btn-active btn-secondary">Reject</button>
+                <button className="btn btn-active btn-accent">Accept</button>
+            </div>
+        </div>
+    </div>
+  )
+}
+
+export default RequestCard

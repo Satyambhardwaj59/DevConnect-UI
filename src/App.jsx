@@ -7,7 +7,7 @@ import appStore from "./utils/appStore";
 import Feed from "./component/Feed";
 import EditProfile from "./component/EditProfile";
 import Connections from "./component/connections";
-import ConnectionRecived from "./component/connectionRecived";
+import Request from "./component/Request";
 
 const App = () => {
 
@@ -22,7 +22,7 @@ const App = () => {
             <Route path="/profile" element={<div><Profile/></div>}/>
             <Route path="/profile/edit" element={<div><EditProfile/></div>}/>
             <Route path="/connections" element={<div><Connections/></div>}/>
-            <Route path="/connection/recived" element={<div><ConnectionRecived/></div>}/>
+            <Route path="/request" element={<div><Request/></div>}/>
           </Route>
         </Routes>
 
