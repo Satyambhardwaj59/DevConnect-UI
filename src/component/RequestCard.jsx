@@ -1,8 +1,25 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { BASE_URL } from '../utils/constantes';
+import { removeRequest } from '../utils/requestSlice';
+import axios from 'axios';
 
 const RequestCard = ({user}) => {
-   const {firstName, lastName, photoUrl, age, gender, about, skills} = user;
-    
+   const {firstName, lastName, photoUrl, age, gender, about, skills} = user.fromUserId;
+   const {_id} = user;
+   const dispatch = useDispatch();
+
+   const reviewRequest = async (status, _id) => {
+        try {
+             await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, {withCredentials: true});
+            dispatch(removeRequest(_id))
+        } catch (error) {
+            // TODO
+            console.log(error);
+            
+        }
+   }
+
   return (
     <div className="card card-side bg-base-300 w-108 shadow-sm m-10 ">
         <figure className='w-1/2'>
@@ -15,13 +32,28 @@ const RequestCard = ({user}) => {
             <p>{about}</p>
             <p>{age + ",  " + gender}</p>
             <p>{skills.join(", ")}</p>
-            <div className='flex justify-between'>
-                <button className="btn btn-active btn-secondary">Reject</button>
-                <button className="btn btn-active btn-accent">Accept</button>
+            <div className='flex justify-around mt-2'>
+                <button className="btn btn-active btn-secondary" onClick={() => reviewRequest("rejected", _id)}>Reject</button>
+                <button className="btn btn-active btn-accent" onClick={() => reviewRequest("accepted", _id)}>Accept</button>
             </div>
         </div>
     </div>
   )
 }
 
-export default RequestCard
+export default RequestCard;
+
+
+
+    // const requestData = useSelector((store) => store.request)
+    // const dispactch = useDispatch();
+
+    // const reviewRequest = async (status, _id) => {
+    //     try {
+    //     const res = axios.post(BASE_URL + "/request/review/" + status + "/" + _id);
+    //     dispactch(removeRequest(_id))
+    //     } catch (error) {
+    //     console.log(error);
+        
+    //     }
+    // }

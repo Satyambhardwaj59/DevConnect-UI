@@ -11,32 +11,27 @@ const Request = () => {
   const dispactch = useDispatch();
 
   const fetchData = async () => {
-    const res = await axios.get(BASE_URL + '/user/connection/received', {withCredentials: true});
-    dispactch(addRequest(res.data.data))
+    try {
+      const res = await axios.get(BASE_URL + '/user/connection/received', {withCredentials: true});
+      dispactch(addRequest(res.data.data))
+    } catch (error) {
+      // TODO
+      console.error(error)
+    }
   }
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  console.log(requestData);
-  
-
   return requestData && (
         <div className='flex flex-col justify-center items-center mt-10 '>
-          <h1 className='text-3xl'>Connection</h1>
-          {requestData ? (requestData.map((conn) => <RequestCard key={conn._id} user={conn.fromUserId}/>)) : (<h1>No connection</h1>)}
+          <h1 className='text-3xl'>Connection Request</h1>
 
+          {requestData ? (requestData.map((conn) => <RequestCard key={conn._id} user={conn}/>)) : (<h1>No connection</h1>)}
+          
         </div>
   )
 }
-
-// { requestData ? 
-//         (requestData.data.map((data) => {
-//           console.log(data);
-          
-//           <h1>{data.fromUserId.firstName}</h1>
-//         })) : <h1>Data not found !!1</h1>
-//       }
 
 export default Request;
