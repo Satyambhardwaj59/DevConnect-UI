@@ -15,7 +15,7 @@ const Request = () => {
       const res = await axios.get(BASE_URL + '/user/connection/received', {withCredentials: true});
       dispactch(addRequest(res.data.data))
     } catch (error) {
-      // TODO
+      <Error status={error.status} title={"Internal Server Chaos 😵‍💫"} message={ error.message} />
       console.error(error)
     }
   }

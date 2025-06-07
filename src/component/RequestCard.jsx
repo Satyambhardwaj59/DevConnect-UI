@@ -14,7 +14,7 @@ const RequestCard = ({user}) => {
              await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, {withCredentials: true});
             dispatch(removeRequest(_id))
         } catch (error) {
-            // TODO
+            <Error status={error.status} title={"Internal Server Chaos 😵‍💫"} message={ error.message} />
             console.log(error);
             
         }

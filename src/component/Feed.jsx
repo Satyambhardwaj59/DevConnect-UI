@@ -17,7 +17,7 @@ const Feed = () => {
       dispatch(addFeed(res.data));
       
     } catch (error) {
-      // TODO error handling
+      <Error status={404} title={"Lost in Space 🚀"} message={"The page you're looking for doesn't exist in this galaxy."} />
       console.log(error);
     }
   };

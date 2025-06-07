@@ -4,6 +4,7 @@ import { BASE_URL } from './../utils/constantes';
 import { useDispatch, useSelector } from 'react-redux';
 import { addConnection } from '../utils/connectionSlice';
 import ConnectionCard from './ConnectionCard';
+import Error from './Error';
 
 const Connections = () => {
     const connection = useSelector((store) => store.connection)
@@ -16,7 +17,7 @@ const Connections = () => {
             const res = await axios.get(BASE_URL + "/user/connection", {withCredentials: true});
             dispatch(addConnection(res.data.data));
         } catch (error) {
-            // TODO 
+            <Error status={404} title={"Lost in Space 🚀"} message={"The page you're looking for doesn't exist in this galaxy."} />
             console.log(error);
         }
     };

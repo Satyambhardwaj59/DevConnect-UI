@@ -39,6 +39,7 @@ const EditProfile = ({ user }) => {
         } catch (err) {
             console.error("Edit profile failed:", err);
             setError(err.response?.data?.message || "Something went wrong");
+            <Error status={err.response?.data?.status} title={"Lost in Space 🚀"} message={err.response?.data?.message} />
         }
     };
 

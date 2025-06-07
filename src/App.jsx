@@ -8,6 +8,7 @@ import Feed from "./component/Feed";
 import EditProfile from "./component/EditProfile";
 import Connections from "./component/connections";
 import Request from "./component/Request";
+import Error from "./component/Error";
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/profile/edit" element={<div><EditProfile/></div>}/>
             <Route path="/connections" element={<div><Connections/></div>}/>
             <Route path="/request" element={<div><Request/></div>}/>
+            <Route path="*" element={<div><Error/></div>}/>
           </Route>
         </Routes>
 

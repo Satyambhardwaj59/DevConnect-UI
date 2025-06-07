@@ -16,7 +16,7 @@ const NavBar = () => {
       dispatch(removeUser());
       navigate("/login");
     } catch (error) {
-      console.log(error);
+      <Error status={403} title={"Access Denied 🔐"} message={"You tried to access a restricted area." + error} />
     }
   };
 

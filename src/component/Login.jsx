@@ -37,7 +37,7 @@ const Login = () => {
       dispatch(addUser(res.data.data));
       return navigate("/profile");
     } catch (error) {
-      //TODO
+      <Error status={403} title={"Access Denied 🔐"} message={"You tried to access a restricted area."} />
       console.log(error);
       
     }
