@@ -7,11 +7,11 @@ import { BASE_URL } from '../utils/constantes';
 
 const Login = () => {
 
-  const [emailId, setEmailId] = useState("satyam@gmail.com");
-  const [password, setPassword] = useState("Satyam@123");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [isLoginForm, setIsLoginForm] = useState(false);
+  const [isLoginForm, setIsLoginForm] = useState(true);
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
