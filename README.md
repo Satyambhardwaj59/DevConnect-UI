@@ -30,3 +30,16 @@
 
 - You should not be access other routes without login
 - If token is not present, redirect user to login page
+
+
+
+
+# Deploymet Session - 3 
+
+## EP-01
+
+- Signup on AWS
+- Launch instance
+- ssh -i "sam.pem" ubuntu@ec2-13-235-82-40.ap-south-1.compute.amazonaws.com
+- Install Node version 20.11.1
+- Git clone
