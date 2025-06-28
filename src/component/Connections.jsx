@@ -8,7 +8,7 @@ import Error from './Error';
 
 const Connections = () => {
     const connection = useSelector((store) => store.connection)
-    console.log(connection);
+    
     const dispatch = useDispatch()
     
 
@@ -26,7 +26,7 @@ const Connections = () => {
         fetchData();
     }, []);
 
-    console.log();
+    
 
     return (
       <>

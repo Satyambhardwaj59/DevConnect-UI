@@ -9,7 +9,7 @@ import { addUser } from '../utils/userSlice';
 import UserCard from './UserCard';
 
 const EditProfile = ({ user }) => {
-    console.log("EditProfile", user);
+    
     if (!user) return <p className="text-center mt-10">Loading user data...</p>;
 
     const [firstName, setFirstName] = useState(user?.user?.firstName || '');
